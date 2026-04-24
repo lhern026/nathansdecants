@@ -1,4 +1,80 @@
 <section class="product-story" aria-label="Product Story">
+  {%- comment -%} ━━━ SCENT DATA ENGINE ━━━ {%- endcomment -%}
+  {%- assign handle = product.handle -%}
+  
+  {%- comment -%} Default Values {%- endcomment -%}
+  {%- assign top_note_name = "Citrus Accord" -%}
+  {%- assign top_note_desc = "A bright, luminous opening that awakens the senses." -%}
+  {%- assign heart_note_name = "Floral Heart" -%}
+  {%- assign heart_note_desc = "The emotional core of the fragrance, blooming with depth." -%}
+  {%- assign base_note_name = "Amber & Woods" -%}
+  {%- assign base_note_desc = "A long-lasting foundation that lingers on the skin." -%}
+  {%- assign story_headline = "Every scent tells a story. This is ours." -%}
+
+  {%- case handle -%}
+    {%- when 'absolute-aphrodisiac' -%}
+      {%- assign top_note_name = "White Flowers" -%}
+      {%- assign top_note_desc = "A delicate, ethereal opening of jasmine and lily." -%}
+      {%- assign heart_note_name = "Amber & Vanilla" -%}
+      {%- assign heart_note_desc = "The signature warmth that creates an irresistible pull." -%}
+      {%- assign base_note_name = "Musk & Castoreum" -%}
+      {%- assign base_note_desc = "Animalic depth that settles into a second-skin finish." -%}
+      {%- assign story_headline = "A primal invitation to the senses." -%}
+    
+    {%- when 'atomic-rose' -%}
+      {%- assign top_note_name = "Italian Bergamot" -%}
+      {%- assign top_note_desc = "Crisp, bright citrus that sets the stage for the explosion." -%}
+      {%- assign heart_note_name = "Bulgarian Rose" -%}
+      {%- assign heart_note_desc = "A powerful, multi-faceted floral heart that demands attention." -%}
+      {%- assign base_note_name = "Madagascar Vanilla" -%}
+      {%- assign base_note_desc = "Creamy sweetness that anchors the rose in pure luxury." -%}
+      {%- assign story_headline = "An olfactory explosion of pure energy." -%}
+
+    {%- when 'babycat' -%}
+      {%- assign top_note_name = "Pink Pepper" -%}
+      {%- assign top_note_desc = "A spicy, electric opening that tingles the senses." -%}
+      {%- assign heart_note_name = "Saffron & Elemi" -%}
+      {%- assign heart_note_desc = "Resinous and exotic, creating a sophisticated warmth." -%}
+      {%- assign base_note_name = "Suede & Vanilla" -%}
+      {%- assign base_note_desc = "The iconic leathery finish of YSL's masterpiece." -%}
+      {%- assign story_headline = "The sophisticated purr of couture." -%}
+
+    {%- when 'another-13' -%}
+      {%- assign top_note_name = "Ambroxan" -%}
+      {%- assign top_note_desc = "The synthetic heart that creates a clean, metallic buzz." -%}
+      {%- assign heart_note_name = "Jasmine Petals" -%}
+      {%- assign heart_note_desc = "A subtle floral hum that adds crystalline clarity." -%}
+      {%- assign base_note_name = "Moss & Musk" -%}
+      {%- assign base_note_desc = "An earthy, skin-like finish that lasts for days." -%}
+      {%- assign story_headline = "An addictive, crystalline addiction." -%}
+
+    {%- when 'noir-29' -%}
+      {%- assign top_note_name = "Fig & Bay Leaf" -%}
+      {%- assign top_note_desc = "A fresh, green opening that feels like a crisp morning." -%}
+      {%- assign heart_note_name = "Cedar & Vetiver" -%}
+      {%- assign heart_note_desc = "Strong, masculine woods that provide a solid structure." -%}
+      {%- assign base_note_name = "Black Tea & Tobacco" -%}
+      {%- assign base_note_desc = "A smoky, sophisticated dry down with deep complexity." -%}
+      {%- assign story_headline = "An ode to the noble leaf." -%}
+
+    {%- when 'blue-talisman-edp' -%}
+      {%- assign top_note_name = "Ginger & Mandarin" -%}
+      {%- assign top_note_desc = "A zesty, sparkling introduction full of light." -%}
+      {%- assign heart_note_name = "Orange Blossom" -%}
+      {%- assign heart_note_desc = "Soft, white florals that bring a Mediterranean breeze." -%}
+      {%- assign base_note_name = "Akigalawood" -%}
+      {%- assign base_note_desc = "A modern, vibrant woody finish with immense trail." -%}
+      {%- assign story_headline = "A celestial charm for the modern era." -%}
+
+    {%- when 'adonis-awakens' -%}
+      {%- assign top_note_name = "Grapefruit & Bergamot" -%}
+      {%- assign top_note_desc = "A burst of sunshine to start the morning." -%}
+      {%- assign heart_note_name = "Raspberry & Rose" -%}
+      {%- assign heart_note_desc = "Sweet, jammy florals that feel lush and romantic." -%}
+      {%- assign base_note_name = "Vanilla & Chestnut" -%}
+      {%- assign base_note_desc = "A gourmand, nutty finish that feels warm and cozy." -%}
+      {%- assign story_headline = "The awakening of a Greek myth." -%}
+  {%- endcase -%}
 
   {%- comment -%} ━━━ CHAPTER 1 — The Opening Statement ━━━ {%- endcomment -%}
   <div class="story__chapter story__opening">
@@ -6,7 +82,7 @@
       <div class="story__opening-layout">
         <div class="story__opening-text reveal">
           <span class="story__eyebrow">{{ section.settings.chapter_1_eyebrow }}</span>
-          <h2 class="story__headline">{{ section.settings.chapter_1_headline }}</h2>
+          <h2 class="story__headline">{{ story_headline }}</h2>
         </div>
         <div class="story__opening-body reveal">
           <p class="story__prose">{{ section.settings.chapter_1_body }}</p>
@@ -24,19 +100,38 @@
       </div>
 
       <div class="story__notes-grid">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'note' -%}
-            <div class="story__note-card reveal" {{ block.shopify_attributes }}>
-              <div class="story__note-shell">
-                <div class="story__note-inner">
-                  <span class="story__note-tier">{{ block.settings.tier }}</span>
-                  <h3 class="story__note-name">{{ block.settings.name }}</h3>
-                  <p class="story__note-description">{{ block.settings.description }}</p>
-                </div>
-              </div>
+        {%- comment -%} Top Note {%- endcomment -%}
+        <div class="story__note-card reveal">
+          <div class="story__note-shell">
+            <div class="story__note-inner">
+              <span class="story__note-tier">Top Note</span>
+              <h3 class="story__note-name">{{ top_note_name }}</h3>
+              <p class="story__note-description">{{ top_note_desc }}</p>
             </div>
-          {%- endif -%}
-        {%- endfor -%}
+          </div>
+        </div>
+
+        {%- comment -%} Heart Note {%- endcomment -%}
+        <div class="story__note-card reveal">
+          <div class="story__note-shell">
+            <div class="story__note-inner">
+              <span class="story__note-tier">Heart Note</span>
+              <h3 class="story__note-name">{{ heart_note_name }}</h3>
+              <p class="story__note-description">{{ heart_note_desc }}</p>
+            </div>
+          </div>
+        </div>
+
+        {%- comment -%} Base Note {%- endcomment -%}
+        <div class="story__note-card reveal">
+          <div class="story__note-shell">
+            <div class="story__note-inner">
+              <span class="story__note-tier">Base Note</span>
+              <h3 class="story__note-name">{{ base_note_name }}</h3>
+              <p class="story__note-description">{{ base_note_desc }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
