@@ -443,11 +443,34 @@ ul { list-style: none; padding: 0; margin: 0; }
 .btn--outline {
   border-color: var(--color-accent) !important;
   color: var(--color-accent) !important;
+  position: relative;
+}
+
+/* Pulse ring radiating from the hero CTA */
+.btn--outline::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-accent);
+  opacity: 0;
+  animation: btn-pulse 2.8s var(--ease-out-expo) infinite;
+  pointer-events: none;
+}
+
+@keyframes btn-pulse {
+  0%   { transform: scale(1);    opacity: 0.5; }
+  70%  { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(1.08); opacity: 0; }
 }
 
 .btn--outline:hover {
   background: var(--color-accent) !important;
   color: var(--color-bg) !important;
+}
+
+.btn--outline:hover::before {
+  animation: none;
 }
 
 .btn:hover {
