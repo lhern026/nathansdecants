@@ -1,0 +1,26 @@
+# Shopify
+config/settings_data.json
+# (Optional: include settings_data.json if you want to version control theme settings)
+# !config/settings_data.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+*.tar.gz
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node
+node_modules/
+dist/
+
+# Local env
+.env
+.shopify-cli.json
