@@ -1,0 +1,27 @@
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {%- for i in (1..8) -%}
+      <div class="marquee__item">{{ section.settings.text }}</div>
+      <div class="marquee__separator">✦</div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Ticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Ticker Text",
+      "default": "PREMIUM DECANTS • WORLDWIDE SHIPPING • NATHAN'S SELECTS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Ticker"
+    }
+  ]
+}
+{% endschema %}

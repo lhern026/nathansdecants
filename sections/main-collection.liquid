@@ -1,0 +1,53 @@
+<section class="section">
+  <div class="container">
+    
+    <div class="collection-header reveal">
+      <span class="section-eyebrow">Collection</span>
+      <h1 class="collection-header__title">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="collection-header__desc">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-grid">
+      {%- for product in collection.products -%}
+        <div class="product-card reveal" style="transition-delay: {{ forloop.index | modulo: 3 | times: 100 }}ms;">
+          <a href="{{ product.url }}" class="product-card__link" aria-label="{{ product.title | escape }}">
+            <div class="product-card__shell">
+              <div class="product-card__inner">
+                <div class="product-card__image-wrap">
+                  {%- if product.featured_image -%}
+                    <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" loading="lazy" width="600" height="auto">
+                  {%- else -%}
+                    <div class="product-card__image-fallback">
+                      <span>{{ product.title }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+                <div class="product-card__info">
+                  <h3 class="product-card__title">{{ product.title }}</h3>
+                  <div class="product-card__price">
+                    {%- if product.compare_at_price > product.price -%}
+                      <s>{{ product.compare_at_price | money }}</s>
+                    {%- endif -%}
+                    From {{ product.price | money }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {%- else -%}
+        <p class="reveal">There are no products in this collection.</p>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": []
+}
+{% endschema %}

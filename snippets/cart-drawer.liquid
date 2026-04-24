@@ -1,0 +1,65 @@
+<div class="cart-drawer-overlay js-cart-drawer-close"></div>
+<div class="cart-drawer" id="CartDrawer" aria-hidden="true">
+  <div class="cart-drawer__header">
+    <h2 class="cart-drawer__title">Your Selection</h2>
+    <button class="cart-drawer__close js-cart-drawer-close" aria-label="Close cart">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-drawer__body" id="CartDrawerContent">
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-drawer__items">
+        {%- for item in cart.items -%}
+          <div class="cart-drawer__item">
+            <div class="cart-drawer__item-image">
+              {%- if item.image -%}
+                <img src="{{ item.image | img_url: '120x' }}" alt="{{ item.title | escape }}" loading="lazy">
+              {%- else -%}
+                 <span style="font-size: 0.6rem; color: var(--color-text-muted);">{{ item.product.title }}</span>
+              {%- endif -%}
+            </div>
+            <div class="cart-drawer__item-info" data-line="{{ forloop.index }}">
+              <div class="cart-drawer__item-title">{{ item.product.title }}</div>
+              {%- unless item.product.has_only_default_variant -%}
+                <div class="cart-drawer__item-variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="cart-drawer__item-actions">
+                <div class="cart-drawer__qty">
+                  <button type="button" class="cart-drawer__qty-btn js-drawer-qty-minus">−</button>
+                  <span class="qty-num js-drawer-qty-num" style="font-size: 0.8rem;">{{ item.quantity }}</span>
+                  <button type="button" class="cart-drawer__qty-btn js-drawer-qty-plus">+</button>
+                </div>
+                <div class="cart-drawer__item-price js-drawer-item-price">{{ item.final_line_price | money }}</div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center;">
+        <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Your collection is empty.</p>
+        <button class="btn btn--outline js-cart-drawer-close">
+          <span>Continue Exploring</span>
+          <span class="btn__icon">→</span>
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+  {%- if cart.item_count > 0 -%}
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <span class="js-drawer-subtotal">{{ cart.total_price | money }}</span>
+      </div>
+      <p class="cart-drawer__tax-note">Taxes and shipping calculated at checkout</p>
+      <form action="{{ routes.cart_url }}" method="post" id="cart-drawer-form">
+        <button type="submit" name="checkout" class="btn btn--solid btn--full">
+          <span>Checkout</span>
+          <span class="btn__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </span>
+        </button>
+      </form>
+    </div>
+  {%- endif -%}
+</div>

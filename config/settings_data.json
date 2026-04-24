@@ -1,0 +1,21 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "settings": {
+      "color_bg": "#FFFFFF",
+      "color_text": "#121212",
+      "color_accent": "#000000"
+    }
+  }
+}

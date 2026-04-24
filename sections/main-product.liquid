@@ -1,0 +1,71 @@
+<section class="product-page">
+  <div class="container">
+    <div class="product-layout">
+      
+      <div class="product-media reveal">
+        <div class="product-media__main">
+          {%- if product.featured_image -%}
+            <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title | escape }}" loading="lazy">
+          {%- else -%}
+             <div class="product-card__image-fallback">
+               <span>{{ product.title }}</span>
+             </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="product-info reveal">
+        <nav class="product-info__breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a> / 
+          {%- if collection -%}
+            <a href="{{ collection.url }}">{{ collection.title }}</a> / 
+          {%- endif -%}
+          <span>{{ product.title }}</span>
+        </nav>
+
+        <h1 class="product-info__title">{{ product.title }}</h1>
+        <div class="product-info__price">
+          {{ product.price | money }}
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product-info__description">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+
+        {%- form 'product', product -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          
+          {%- unless product.has_only_default_variant -%}
+            <div style="margin-bottom: 2rem;">
+              <label class="product-form__label">Select Size</label>
+              <select name="id" class="product-form__select">
+                {%- for variant in product.variants -%}
+                  <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}>
+                    {{ variant.title }} - {{ variant.price | money }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endunless -%}
+
+          <button type="submit" class="btn btn--solid btn--full" {% unless product.available %}disabled{% endunless %}>
+            <span>{% if product.available %}Add to Cart{% else %}Sold Out{% endif %}</span>
+            <span class="btn__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            </span>
+          </button>
+        {%- endform -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Layout",
+  "settings": []
+}
+{% endschema %}

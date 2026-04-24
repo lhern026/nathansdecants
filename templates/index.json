@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "text": "PREMIUM DECANTS • WORLDWIDE SHIPPING • NATHAN'S SELECTS"
+      }
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "title": "Nathan's Decants",
+        "subtitle": "Discovery-sized decants from the world's finest houses.",
+        "button_text": "SHOP DECANTS",
+        "button_link": "#collection"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "The Collection",
+        "products_to_show": 8
+      }
+    }
+  },
+  "order": [
+    "marquee",
+    "hero",
+    "featured_collection"
+  ]
+}

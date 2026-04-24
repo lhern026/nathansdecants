@@ -1,0 +1,61 @@
+<section class="section" style="padding-top: calc(var(--section-gap) + 4rem);">
+  <div class="container">
+    
+    <div class="collection-header reveal">
+      <span class="section-eyebrow">Search</span>
+      <h1 class="collection-header__title">Search Results</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" style="display: flex; gap: 1rem; max-width: 500px; margin-top: 2rem;">
+        <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search our collection..." class="search-input" aria-label="Search">
+        <button type="submit" class="btn btn--solid">
+          <span>Search</span>
+        </button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      <div class="product-grid" style="margin-top: var(--section-gap);">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            <div class="product-card reveal" style="transition-delay: {{ forloop.index | modulo: 3 | times: 100 }}ms;">
+              <a href="{{ item.url }}" class="product-card__link" aria-label="{{ item.title | escape }}">
+                <div class="product-card__shell">
+                  <div class="product-card__inner">
+                    <div class="product-card__image-wrap">
+                      {%- if item.featured_image -%}
+                        <img src="{{ item.featured_image | img_url: '600x' }}" alt="{{ item.title | escape }}" loading="lazy" width="600" height="auto">
+                      {%- else -%}
+                        <div class="product-card__image-fallback">
+                          <span>{{ item.title }}</span>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                    <div class="product-card__info">
+                      <div class="product-card__vendor">{{ item.vendor | default: shop.name }}</div>
+                      <h3 class="product-card__title">{{ item.title }}</h3>
+                      <div class="product-card__price">
+                        {%- if item.compare_at_price > item.price -%}
+                          <s>{{ item.compare_at_price | money }}</s>
+                        {%- endif -%}
+                        {{ item.price | money }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <p class="reveal">No results found for "{{ search.terms | escape }}".</p>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search Results",
+  "settings": []
+}
+{% endschema %}

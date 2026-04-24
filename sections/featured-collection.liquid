@@ -1,0 +1,75 @@
+<section id="collection" class="section collection-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Curated Selection</span>
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    </div>
+
+    <div class="product-grid">
+      {%- assign collection = collections[section.settings.collection] -%}
+      {%- for product in collection.products limit: section.settings.products_to_show -%}
+        <div class="product-card reveal">
+          <a href="{{ product.url }}" class="product-card__link" aria-label="{{ product.title | escape }}">
+            <div class="product-card__shell">
+              <div class="product-card__inner">
+                <div class="product-card__image-wrap">
+                  {%- if product.featured_image -%}
+                    <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" loading="lazy" width="600" height="auto">
+                  {%- else -%}
+                    <div class="product-card__image-fallback">
+                      <span>{{ product.title }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+                <div class="product-card__info">
+                  <h3 class="product-card__title">{{ product.title }}</h3>
+                  <div class="product-card__price">
+                    {%- if product.compare_at_price > product.price -%}
+                      <s>{{ product.compare_at_price | money }}</s>
+                    {%- endif -%}
+                    From {{ product.price | money }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {%- else -%}
+        <p>Your collection is empty. Configure a collection in the theme editor.</p>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "The Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 3,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

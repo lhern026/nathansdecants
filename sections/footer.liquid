@@ -1,0 +1,42 @@
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+      <div class="footer-brand reveal">
+        <div class="footer-brand__name">Nathan's Decants</div>
+        <p class="footer-brand__text">An intentional approach to discovery.</p>
+      </div>
+
+      <div class="footer-col reveal" style="transition-delay: 100ms;">
+        <div class="footer-col__heading">Shop</div>
+        <ul>
+          <li><a href="{{ routes.collections_url }}">Catalog</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="{{ routes.search_url }}">Search</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col reveal" style="transition-delay: 200ms;">
+        <div class="footer-col__heading">Legal</div>
+        <ul>
+          {%- for policy in shop.policies -%}
+            <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom reveal" style="transition-delay: 300ms;">
+      <div>&copy; {{ 'now' | date: "%Y" }} Nathan's Decants</div>
+      <div>Try before you invest.</div>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

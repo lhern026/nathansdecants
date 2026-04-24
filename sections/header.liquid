@@ -1,0 +1,47 @@
+<header class="site-header">
+  <div class="hamburger" aria-label="Open navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <a href="{{ routes.root_url }}" class="header-logo">NATHAN'S DECANTS</a>
+
+  <nav class="header-nav">
+    {% for link in linklists.main-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {% endfor %}
+  </nav>
+
+  <div class="header-actions">
+    <a href="{{ routes.cart_url }}" class="js-cart-drawer-trigger" aria-label="Cart" style="position: relative;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      {% if cart.item_count > 0 %}
+        <span class="cart-count">{{ cart.item_count }}</span>
+      {% endif %}
+    </a>
+  </div>
+</header>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav__close" aria-label="Close navigation">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+  {% for link in linklists.main-menu.links %}
+    <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+  {% endfor %}
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Navigation Menu"
+    }
+  ]
+}
+{% endschema %}

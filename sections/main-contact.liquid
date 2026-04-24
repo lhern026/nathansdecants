@@ -1,0 +1,72 @@
+<section class="section contact-page">
+  <div class="container">
+    <div class="contact-layout">
+      
+      <div class="contact-header reveal">
+        <span class="section-eyebrow">Concierge</span>
+        <h1 class="section-title">Get in Touch</h1>
+        <div class="contact-info">
+          <div class="contact-info__item">
+            <span class="contact-info__label">Email</span>
+            <a href="mailto:{{ shop.email }}" class="contact-info__value">{{ shop.email }}</a>
+          </div>
+          <div class="contact-info__item">
+            <span class="contact-info__label">Response Time</span>
+            <span class="contact-info__value">Within 24 Hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal">
+        <div class="product-card__shell">
+          <div class="product-card__inner contact-card">
+            {%- form 'contact', id: 'ContactForm' -%}
+              {%- if form.posted_successfully? -%}
+                <div class="contact-success">
+                  <p class="form-status" tabindex="-1" autofocus>
+                    Thank you. We'll be in touch shortly.
+                  </p>
+                </div>
+              {%- elsif form.errors -%}
+                <div class="contact-error">
+                  {{ form.errors | default_errors }}
+                </div>
+              {%- endif -%}
+
+              <div class="form-group-grid">
+                <div class="form-field">
+                  <label class="product-form__label" for="ContactForm-name">Name</label>
+                  <input class="product-form__select contact-input" autocomplete="name" type="text" id="ContactForm-name" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="Your Name">
+                </div>
+                <div class="form-field">
+                  <label class="product-form__label" for="ContactForm-email">Email</label>
+                  <input class="product-form__select contact-input" autocomplete="email" type="email" id="ContactForm-email" name="contact[email]" spellcheck="false" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-required="true" {% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="ContactForm-email-error" {% endif %} placeholder="your@email.com">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="product-form__label" for="ContactForm-body">Message</label>
+                <textarea rows="6" id="ContactForm-body" class="product-form__select contact-textarea" name="contact[body]" placeholder="How can we help?">
+                  {{- form.body -}}
+                </textarea>
+              </div>
+
+              <button type="submit" class="btn btn--full">
+                <span>Send Enquiry</span>
+                <span class="btn__icon">→</span>
+              </button>
+            {%- endform -%}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Page",
+  "settings": []
+}
+{% endschema %}
