@@ -6,6 +6,29 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==============================
+     0. HERO CINEMATIC REVEAL
+     ============================== */
+  const hero = document.querySelector('.js-parallax-hero');
+  if (hero) {
+    // Trigger initial cascade reveal
+    setTimeout(() => {
+      hero.classList.add('is-loaded');
+    }, 100);
+
+    // Parallax on scroll
+    const bg = hero.querySelector('.js-parallax-bg');
+    const fg = hero.querySelector('.js-parallax-fg');
+    
+    window.addEventListener('scroll', () => {
+      const scroll = window.pageYOffset;
+      if (scroll > window.innerHeight) return; // Only animate while visible
+      
+      if (bg) bg.style.transform = `translateY(${scroll * 0.4}px) scale(1)`;
+      if (fg) fg.style.transform = `translateY(${scroll * 0.15}px)`;
+    }, { passive: true });
+  }
+
+  /* ==============================
      1. HAMBURGER MENU
      ============================== */
   const hamburger = document.querySelector('.hamburger');

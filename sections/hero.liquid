@@ -1,14 +1,18 @@
-<section class="hero">
+<section class="hero js-parallax-hero">
   <div class="hero__media">
-    {%- if section.settings.image -%}
-      <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt | escape }}" loading="lazy" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}">
+    {%- if section.settings.video != blank -%}
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'hero__video js-parallax-bg' }}
+    {%- elsif section.settings.image -%}
+      <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt | escape }}" loading="lazy" class="js-parallax-bg">
     {%- else -%}
-      <div style="width: 100%; height: 100%; background: var(--color-bg-elevated);"></div>
+      <div style="width: 100%; height: 100%; background: var(--color-bg-elevated);" class="js-parallax-bg"></div>
     {%- endif -%}
-    <div class="hero__overlay"></div>
+    
+    <div class="hero__overlay-vignette"></div>
+    <div class="hero__overlay-mesh"></div>
   </div>
 
-  <div class="hero__product-image">
+  <div class="hero__product-image js-parallax-fg">
     {%- assign first_product = collections.all.products.first -%}
     {%- if first_product -%}
       <img src="{{ first_product.featured_image | image_url: width: 1200 }}" alt="{{ first_product.title }}" loading="lazy">
@@ -16,23 +20,32 @@
     <div class="hero__product-fade"></div>
   </div>
   
-  <div class="hero__content reveal">
+  <div class="hero__content">
     {%- if section.settings.eyebrow != blank -%}
-      <span class="hero__eyebrow">{{ section.settings.eyebrow }}</span>
+      <div class="hero__eyebrow-wrap reveal-cascade">
+        <span class="hero__eyebrow">{{ section.settings.eyebrow }}</span>
+      </div>
     {%- endif -%}
     
-    <h1 class="hero__title">{{ section.settings.title }}</h1>
+    <h1 class="hero__title">
+      {%- assign title_words = section.settings.title | split: ' ' -%}
+      {%- for word in title_words -%}
+        <span class="hero__title-word reveal-cascade" style="transition-delay: {{ forloop.index | times: 100 }}ms">{{ word }}</span>
+      {%- endfor -%}
+    </h1>
     
     {%- if section.settings.subtitle != blank -%}
-      <p class="hero__subtitle">{{ section.settings.subtitle }}<br>Starting at $13</p>
+      <p class="hero__subtitle reveal-cascade" style="transition-delay: 400ms">{{ section.settings.subtitle }}<br>Starting at $13</p>
     {%- endif -%}
 
-    <a href="{{ section.settings.button_link | default: '#collection' }}" class="btn btn--outline">
-      <span>{{ section.settings.button_text | default: 'SHOP DECANTS' }}</span>
-      <span class="btn__icon">→</span>
-    </a>
+    <div class="hero__actions reveal-cascade" style="transition-delay: 500ms">
+      <a href="{{ section.settings.button_link | default: '#collection' }}" class="btn btn--outline">
+        <span>{{ section.settings.button_text | default: 'SHOP DECANTS' }}</span>
+        <span class="btn__icon">→</span>
+      </a>
+    </div>
 
-    <a href="#collection" class="hero__scroll" aria-label="Scroll to collection">
+    <a href="#collection" class="hero__scroll reveal-cascade" aria-label="Scroll to collection" style="transition-delay: 700ms">
       <div class="scroll-arrow"></div>
     </a>
   </div>
@@ -52,8 +65,13 @@
 
 {% schema %}
 {
-  "name": "Editorial Hero",
+  "name": "Cinematic Hero",
   "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background Video (Prioritized over image)"
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -91,7 +109,7 @@
   ],
   "presets": [
     {
-      "name": "Editorial Hero"
+      "name": "Cinematic Hero"
     }
   ]
 }

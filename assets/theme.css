@@ -306,26 +306,43 @@ ul { list-style: none; padding: 0; margin: 0; }
   z-index: 1;
 }
 
-.hero__media img {
+.hero__media img,
+.hero__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: 0.7;
+  transform: scale(1.05); /* Pre-scale for parallax/load-in */
+  transition: transform 2.5s var(--ease-out-expo), opacity 2s ease;
 }
 
-/* Dark overlay gradient for text legibility */
-.hero__overlay {
+.js-parallax-hero.is-loaded .js-parallax-bg {
+  transform: scale(1);
+}
+
+/* Deep cinematic vignette */
+.hero__overlay-vignette {
   position: absolute;
   inset: 0;
   z-index: 2;
-  /* Top gradient protects the logo, bottom protects the subtitle */
+  background: radial-gradient(circle at center, transparent 30%, rgba(10, 10, 10, 0.8) 100%);
+  pointer-events: none;
+}
+
+/* Top/Bottom gradient protects text */
+.hero__overlay-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
   background: linear-gradient(
     to bottom,
-    rgba(10, 10, 10, 0.8) 0%,
-    transparent 20%,
-    transparent 80%,
+    rgba(10, 10, 10, 0.9) 0%,
+    rgba(10, 10, 10, 0.4) 20%,
+    transparent 50%,
+    rgba(10, 10, 10, 0.6) 80%,
     rgba(10, 10, 10, 0.95) 100%
   );
+  pointer-events: none;
 }
 
 .hero__product-image {
@@ -334,9 +351,9 @@ ul { list-style: none; padding: 0; margin: 0; }
   right: 0;
   width: 100%;
   height: 50%;
-  z-index: 2;
+  z-index: 4;
   overflow: hidden;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 @media (min-width: 992px) {
@@ -356,9 +373,8 @@ ul { list-style: none; padding: 0; margin: 0; }
 .hero__product-fade {
   position: absolute;
   inset: 0;
-  /* Deepen the bottom fade to merge product into the void */
   background: linear-gradient(to bottom, var(--color-bg) 0%, transparent 20%, transparent 60%, var(--color-bg) 95%);
-  z-index: 3;
+  z-index: 5;
 }
 
 @media (min-width: 992px) {
@@ -392,13 +408,17 @@ ul { list-style: none; padding: 0; margin: 0; }
   }
 }
 
+.hero__eyebrow-wrap {
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
 .hero__eyebrow {
   display: inline-block;
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   color: var(--color-accent);
-  margin-bottom: 1.5rem;
   font-family: var(--font-body);
   font-weight: 500;
 }
@@ -409,6 +429,28 @@ ul { list-style: none; padding: 0; margin: 0; }
   line-height: 0.92;
   margin-bottom: 2rem;
   max-width: 10ch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.3em;
+}
+
+.hero__title-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Staggered Cascade Reveal */
+.reveal-cascade {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  filter: blur(10px);
+  transition: all 1.2s var(--ease-out-expo);
+}
+
+.js-parallax-hero.is-loaded .reveal-cascade {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 .hero__subtitle {
