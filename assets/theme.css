@@ -624,7 +624,29 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 /* ============================================
-   8. BENTO COLLECTION (Asymmetrical Grid)
+   8. PRODUCT CARDS & GRID
+   ============================================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* ============================================
+   8.5. BENTO COLLECTION (Asymmetrical Grid)
    ============================================ */
 .bento-section {
   padding: clamp(5rem, 12vh, 8rem) 0;
