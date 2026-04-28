@@ -35,11 +35,16 @@
         "collection": "bestsellers",
         "products_to_show": 5
       }
+    },
+    "craft": {
+      "type": "editorial-craft",
+      "settings": {}
     }
   },
   "order": [
-    "marquee",
     "hero",
-    "featured_collection"
+    "featured_collection",
+    "craft",
+    "marquee"
   ]
 }

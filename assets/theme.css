@@ -1961,3 +1961,112 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-text);
   margin-bottom: 3rem;
 }
+
+/* ============================================
+   16. EDITORIAL CRAFT (Authenticity Guarantee)
+   ============================================ */
+.editorial-craft {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
+.editorial-craft__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .editorial-craft__layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Outer bezel shell */
+.editorial-craft__shell {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.375rem;
+}
+
+/* Inner Core */
+.editorial-craft__inner {
+  border-radius: calc(var(--radius-lg) - 0.25rem);
+  overflow: hidden;
+  background: var(--color-bg-card);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  aspect-ratio: 4 / 5;
+}
+
+.editorial-craft__inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.editorial-craft__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--color-text-subtle);
+}
+
+.editorial-craft__content {
+  max-width: 500px;
+}
+
+.editorial-craft__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.editorial-craft__prose {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.editorial-craft__stats {
+  display: flex;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.editorial-craft__stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.editorial-craft__stat-value {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.editorial-craft__stat-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  font-weight: 500;
+}
