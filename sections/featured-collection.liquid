@@ -1,20 +1,30 @@
-<section id="collection" class="section collection-section">
+<section id="collection" class="section bento-section">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-eyebrow">Curated Selection</span>
-      <h2 class="section-title">{{ section.settings.title }}</h2>
+    
+    {%- comment -%} 1. The Editorial Split (Philosophy) {%- endcomment -%}
+    <div class="bento-editorial reveal-cascade">
+      <div class="bento-editorial__typography">
+        <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+      </div>
+      <div class="bento-editorial__prose">
+        <p>{{ section.settings.philosophy_text }}</p>
+      </div>
     </div>
 
-    <div class="product-grid">
+    {%- comment -%} 2. The Asymmetrical Bento Grid {%- endcomment -%}
+    <div class="bento-grid">
       {%- assign collection = collections[section.settings.collection] -%}
       {%- for product in collection.products limit: section.settings.products_to_show -%}
-        <div class="product-card reveal">
+        
+        {%- comment -%} Make the first product span more space {%- endcomment -%}
+        <div class="product-card reveal {% if forloop.first %}bento-grid__featured{% else %}bento-grid__standard{% endif %}" style="transition-delay: {{ forloop.index | times: 150 }}ms">
           <a href="{{ product.url }}" class="product-card__link" aria-label="{{ product.title | escape }}">
             <div class="product-card__shell">
               <div class="product-card__inner">
                 <div class="product-card__image-wrap">
                   {%- if product.featured_image -%}
-                    <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" loading="lazy" width="600" height="auto">
+                    <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title | escape }}" loading="lazy">
                   {%- else -%}
                     <div class="product-card__image-fallback">
                       <span>{{ product.title }}</span>
@@ -34,22 +44,38 @@
             </div>
           </a>
         </div>
+        
       {%- else -%}
-        <p>Your collection is empty. Configure a collection in the theme editor.</p>
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem;">
+          <p>Your collection is empty. Configure a collection in the theme editor.</p>
+        </div>
       {%- endfor -%}
     </div>
+    
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Featured Collection",
+  "name": "Bento Collection",
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Curated Selection"
+    },
     {
       "type": "text",
       "id": "title",
       "label": "Heading",
       "default": "The Collection"
+    },
+    {
+      "type": "textarea",
+      "id": "philosophy_text",
+      "label": "Philosophy Text",
+      "default": "Experience the world's most exclusive houses, without the commitment. Every decant is an invitation to discover your next signature scent."
     },
     {
       "type": "collection",
@@ -60,7 +86,7 @@
       "type": "range",
       "id": "products_to_show",
       "min": 2,
-      "max": 12,
+      "max": 7,
       "step": 1,
       "default": 3,
       "label": "Products to show"
@@ -68,7 +94,7 @@
   ],
   "presets": [
     {
-      "name": "Featured Collection"
+      "name": "Bento Collection"
     }
   ]
 }

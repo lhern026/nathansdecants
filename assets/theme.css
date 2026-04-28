@@ -624,20 +624,76 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 /* ============================================
-   8. PRODUCT CARDS — Double Bezel
+   8. BENTO COLLECTION (Asymmetrical Grid)
    ============================================ */
-.product-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 1.5rem !important;
+.bento-section {
+  padding: clamp(5rem, 12vh, 8rem) 0;
 }
 
-@media (min-width: 1024px) {
-  .product-grid { grid-template-columns: repeat(4, 1fr) !important; }
+/* 1. The Editorial Split (Philosophy) */
+.bento-editorial {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: clamp(4rem, 8vh, 6rem);
+}
+
+@media (min-width: 992px) {
+  .bento-editorial {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+}
+
+.bento-editorial__typography {
+  flex: 1;
+  max-width: 600px;
+}
+
+.bento-editorial__prose {
+  flex: 1;
+  max-width: 480px;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* 2. The Asymmetrical Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+  }
+  
+  /* The "Hero" Card of the Bento Grid */
+  .bento-grid__featured {
+    grid-column: span 7;
+    grid-row: span 2;
+  }
+
+  /* The smaller stacked cards */
+  .bento-grid__standard {
+    grid-column: span 5;
+  }
+  
+  /* If there's a 4th or 5th card, let them spread out */
+  .bento-grid__standard:nth-child(n+4) {
+    grid-column: span 6;
+  }
 }
 
 /* Outer bezel shell */
 .product-card {
+  height: 100%;
+  display: block;
   transition: transform 0.7s var(--ease-out-expo);
 }
 
@@ -645,7 +701,13 @@ ul { list-style: none; padding: 0; margin: 0; }
   transform: translateY(-4px);
 }
 
+.product-card__link {
+  display: block;
+  height: 100%;
+}
+
 .product-card__shell {
+  height: 100%;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -659,6 +721,9 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 /* Inner card core */
 .product-card__inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background: var(--color-bg-card);
   border-radius: calc(var(--radius-lg) - 0.25rem);
   overflow: hidden;
@@ -666,7 +731,9 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 .product-card__image-wrap {
-  aspect-ratio: 1 / 1;
+  flex: 1;
+  min-height: 200px;
+  aspect-ratio: auto;
   overflow: hidden;
   background: #FFFFFF; /* High-end spotlight base */
   display: flex;
