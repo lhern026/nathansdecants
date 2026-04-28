@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "marquee": {
@@ -9,6 +18,8 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "video": "shopify://files/videos/7075990-uhd_4096_2160_30fps.mp4",
+        "eyebrow": "Established 2024",
         "title": "Nathan's Decants",
         "subtitle": "Discovery-sized decants from the world's finest houses.",
         "button_text": "SHOP DECANTS",
@@ -19,6 +30,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "The Collection",
+        "collection": "",
         "products_to_show": 8
       }
     }
