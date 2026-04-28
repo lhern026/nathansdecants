@@ -9,16 +9,10 @@
  */
 {
   "sections": {
-    "marquee": {
-      "type": "marquee",
-      "settings": {
-        "text": "PREMIUM DECANTS • WORLDWIDE SHIPPING • NATHAN'S SELECTS"
-      }
-    },
     "hero": {
       "type": "hero",
       "settings": {
-        "video": "shopify://files/videos/7075990-uhd_4096_2160_30fps.mp4",
+        "video": "shopify://files/videos/Pipette_releases_drop_vial_202604281143_0ba6bdb5-f909-49aa-a072-3d113bfd86c7.mp4",
         "eyebrow": "Established 2024",
         "title": "Nathan's Decants",
         "subtitle": "Discovery-sized decants from the world's finest houses.",
@@ -38,7 +32,19 @@
     },
     "craft": {
       "type": "editorial-craft",
-      "settings": {}
+      "settings": {
+        "eyebrow": "Authenticity Guarantee",
+        "title": "The Art of the Pour.",
+        "text": "<p>Every decant is extracted using sterile, medical-grade syringes directly from 100% authentic retail bottles. No funnels. No splashing. Pure, uncontaminated fragrance delivered exactly as the master perfumer intended.</p>",
+        "button_text": "Learn Our Process",
+        "button_link": ""
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "text": "PREMIUM DECANTS • WORLDWIDE SHIPPING • NATHAN'S SELECTS"
+      }
     }
   },
   "order": [
