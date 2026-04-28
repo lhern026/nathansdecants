@@ -29,9 +29,11 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "eyebrow": "Curated Selection",
         "title": "The Collection",
-        "collection": "",
-        "products_to_show": 8
+        "philosophy_text": "Experience the world's most exclusive houses, without the commitment. Every decant is an invitation to discover your next signature scent.",
+        "collection": "bestsellers",
+        "products_to_show": 5
       }
     }
   },
