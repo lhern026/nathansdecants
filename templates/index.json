@@ -13,11 +13,13 @@
       "type": "hero",
       "settings": {
         "video": "shopify://files/videos/Pipette_releases_drop_vial_202604281143_0ba6bdb5-f909-49aa-a072-3d113bfd86c7.mp4",
-        "eyebrow": "Established 2024",
-        "title": "Nathan's Decants",
-        "subtitle": "Discovery-sized decants from the world's finest houses.",
-        "button_text": "SHOP DECANTS",
-        "button_link": "/collections/all"
+        "eyebrow": "LUXURY FRAGRANCES. DECANTED BY HAND.",
+        "title": "Smell like $300 for $30.",
+        "subtitle": "Designer & niche fragrances in discovery-sized decants. Build your rotation for less.",
+        "button_1_text": "BUILD YOUR SET",
+        "button_1_link": "/collections/all",
+        "button_2_text": "BROWSE FRAGRANCES",
+        "button_2_link": "/collections/all"
       }
     },
     "featured_collection": {

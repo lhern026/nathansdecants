@@ -428,10 +428,11 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--color-text);
   line-height: 0.92;
   margin-bottom: 2rem;
-  max-width: 10ch;
+  max-width: 14ch;
   display: flex;
   flex-wrap: wrap;
   gap: 0 0.3em;
+  font-weight: 300;
 }
 
 .hero__title-word {
@@ -461,6 +462,133 @@ ul { list-style: none; padding: 0; margin: 0; }
   margin-bottom: 2.5rem;
 }
 
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.hero__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero__trust-icon {
+  font-size: 1.2rem;
+}
+
+.hero__trust-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Floating Live Bar */
+.hero__live-bar {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - (var(--gutter) * 2));
+  max-width: var(--container-max);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  z-index: 20;
+}
+
+.hero__live-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero__live-dot {
+  width: 8px;
+  height: 8px;
+  background: #C49B6D; /* Branding sand color */
+  border-radius: 50%;
+  box-shadow: 0 0 10px #C49B6D;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.hero__live-status {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.hero__live-ticker-wrap {
+  flex: 1;
+  overflow: hidden;
+  height: 40px;
+}
+
+.hero__live-ticker {
+  display: flex;
+  flex-direction: column;
+  animation: ticker-slide 12s infinite linear;
+}
+
+.hero__live-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.hero__live-item img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.hero__live-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__live-name {
+  font-size: 0.75rem;
+  color: var(--color-text);
+}
+
+.hero__live-time {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+}
+
+@keyframes ticker-slide {
+  0%, 25% { transform: translateY(0); }
+  33%, 58% { transform: translateY(-40px); }
+  66%, 91% { transform: translateY(-80px); }
+  100% { transform: translateY(0); }
+}
+
 /* ============================================
    5. BUTTONS — Pill with nested icon
    ============================================ */
@@ -486,6 +614,18 @@ ul { list-style: none; padding: 0; margin: 0; }
   border-color: var(--color-accent) !important;
   color: var(--color-accent) !important;
   position: relative;
+}
+
+.btn--solid {
+  background: #C49B6D !important;
+  border-color: #C49B6D !important;
+  color: #000 !important;
+}
+
+.btn--solid:hover {
+  background: var(--color-text) !important;
+  border-color: var(--color-text) !important;
+  color: var(--color-bg) !important;
 }
 
 /* Pulse ring radiating from the hero CTA */
