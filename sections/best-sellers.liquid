@@ -1,83 +1,79 @@
 <section class="section best-sellers">
-  <div class="container best-sellers__container">
-    
-    {%- comment -%} Left: Editorial Typography {%- endcomment -%}
-    <div class="best-sellers__editorial reveal">
-      <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
-      <h2 class="section-title">{{ section.settings.title }}</h2>
-      <p class="best-sellers__prose">{{ section.settings.text }}</p>
-      
-      {%- if section.settings.button_text != blank -%}
-        <div style="margin-top: 3rem;">
-          <a href="{{ section.settings.collection.url | default: '/collections/all' }}" class="btn btn--outline">
+  <div class="container">
+
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="best-sellers__header reveal">
+      <div class="best-sellers__header-left">
+        <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+      </div>
+      <div class="best-sellers__header-right">
+        <p class="best-sellers__prose">{{ section.settings.text }}</p>
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.collection.url | default: '/collections/all' }}" class="btn btn--outline" style="margin-top: 2rem;">
             {{ section.settings.button_text }}
             <span class="btn__icon">→</span>
           </a>
-        </div>
-      {%- endif -%}
-    </div>
-
-    {%- comment -%} Right: Horizontal Scroll Track {%- endcomment -%}
-    <div class="best-sellers__track-wrap reveal" style="transition-delay: 200ms">
-      <div class="best-sellers__track">
-        {%- assign collection = collections[section.settings.collection] -%}
-        {%- for product in collection.products limit: section.settings.products_to_show -%}
-          <div class="product-card best-sellers__card">
-            <a href="{{ product.url }}" class="product-card__link" aria-label="{{ product.title | escape }}">
-              <div class="product-card__shell">
-                <div class="product-card__inner">
-                  
-                  {%- if product.featured_image -%}
-                    <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" loading="lazy">
-                  {%- else -%}
-                    <div class="product-card__image-fallback">
-                      <span>{{ product.title }}</span>
-                    </div>
-                  {%- endif -%}
-                  
-                  <div class="best-sellers__card-info">
-                    <span class="best-sellers__card-vendor">{{ product.vendor | default: 'Fragrance House' }}</span>
-                    <h3 class="best-sellers__card-title">{{ product.title }}</h3>
-                    <div class="best-sellers__card-price">
-                      {%- if product.compare_at_price > product.price -%}
-                        <s>{{ product.compare_at_price | money }}</s>
-                      {%- endif -%}
-                      From {{ product.price | money | default: '$25.00' }}
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </a>
-          </div>
-        {%- else -%}
-          {%- comment -%} Placeholder state {%- endcomment -%}
-          {%- for i in (1..4) -%}
-            <div class="product-card best-sellers__card">
-              <div class="product-card__shell">
-                <div class="product-card__inner">
-                  <div class="product-card__image-fallback">
-                    <span>Top Seller {{ i }}</span>
-                  </div>
-                  <div class="best-sellers__card-info">
-                    <span class="best-sellers__card-vendor">Fragrance House</span>
-                    <h3 class="best-sellers__card-title">Signature Scent</h3>
-                    <div class="best-sellers__card-price">From $29.00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {%- endfor -%}
-        {%- endfor -%}
+        {%- endif -%}
       </div>
     </div>
 
+  </div>
+
+  {%- comment -%} Full-Bleed Horizontal Scroll {%- endcomment -%}
+  <div class="best-sellers__scroll reveal" style="transition-delay: 200ms">
+    <div class="best-sellers__track">
+      {%- assign collection = collections[section.settings.collection] -%}
+      {%- for product in collection.products limit: section.settings.products_to_show -%}
+        <a href="{{ product.url }}" class="best-sellers__item" aria-label="{{ product.title | escape }}">
+          
+          {%- comment -%} Ranking Number {%- endcomment -%}
+          <span class="best-sellers__rank">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+
+          {%- comment -%} Image — Dark Background Container {%- endcomment -%}
+          <div class="best-sellers__image">
+            {%- if product.featured_image -%}
+              <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" loading="lazy">
+            {%- else -%}
+              <div class="best-sellers__image-fallback"></div>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Info {%- endcomment -%}
+          <div class="best-sellers__info">
+            <span class="best-sellers__vendor">{{ product.vendor }}</span>
+            <h3 class="best-sellers__name">{{ product.title }}</h3>
+            <span class="best-sellers__price">
+              {%- if product.compare_at_price > product.price -%}
+                <s class="best-sellers__compare">{{ product.compare_at_price | money }}</s>
+              {%- endif -%}
+              From {{ product.price | money }}
+            </span>
+          </div>
+
+        </a>
+      {%- else -%}
+        {%- for i in (1..6) -%}
+          <div class="best-sellers__item">
+            <span class="best-sellers__rank">{{ i | prepend: '00' | slice: -2, 2 }}</span>
+            <div class="best-sellers__image">
+              <div class="best-sellers__image-fallback"></div>
+            </div>
+            <div class="best-sellers__info">
+              <span class="best-sellers__vendor">Fragrance House</span>
+              <h3 class="best-sellers__name">Signature Scent</h3>
+              <span class="best-sellers__price">From $29.00</span>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Best Sellers (Editorial)",
+  "name": "Best Sellers",
   "settings": [
     {
       "type": "text",
@@ -94,7 +90,7 @@
     {
       "type": "textarea",
       "id": "text",
-      "label": "Philosophy Text",
+      "label": "Description",
       "default": "The fragrances currently dominating TikTok. Proven compliment getters, available in discovery-sized decants."
     },
     {
@@ -120,7 +116,7 @@
   ],
   "presets": [
     {
-      "name": "Best Sellers (Editorial)"
+      "name": "Best Sellers"
     }
   ]
 }
