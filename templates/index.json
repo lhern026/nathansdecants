@@ -22,60 +22,6 @@
         "button_2_link": "/collections/all"
       }
     },
-    "build_set": {
-      "type": "build-your-set",
-      "settings": {
-        "eyebrow": "Your Rotation Starts Here",
-        "title": "Build your scent rotation.",
-        "subtitle": "Pick 3, 5, or 10 discovery-sized decants. No commitment, no full-bottle risk.",
-        "tier_1_label": "Starter",
-        "tier_1_count": "3",
-        "tier_1_price": "From $39",
-        "tier_2_label": "Collection",
-        "tier_2_count": "5",
-        "tier_2_price": "From $59",
-        "tier_3_label": "Connoisseur",
-        "tier_3_count": "10",
-        "tier_3_price": "From $99"
-      }
-    },
-    "social_proof": {
-      "type": "social-proof",
-      "settings": {
-        "title": "PACKING ORDERS TODAY"
-      },
-      "blocks": {
-        "order_1": {
-          "type": "order",
-          "settings": {
-            "text": "Let's pack an order for Jordan!",
-            "time": "2 min ago"
-          }
-        },
-        "order_2": {
-          "type": "order",
-          "settings": {
-            "text": "Packing Creed Aventus for Ethan",
-            "time": "15 min ago"
-          }
-        },
-        "order_3": {
-          "type": "order",
-          "settings": {
-            "text": "Let's pack an order for Sloan!",
-            "time": "1 hr ago"
-          }
-        },
-        "order_4": {
-          "type": "order",
-          "settings": {
-            "text": "Packing Ex Nihilo for Alex",
-            "time": "2 hrs ago"
-          }
-        }
-      },
-      "block_order": ["order_1", "order_2", "order_3", "order_4"]
-    },
     "best_sellers": {
       "type": "best-sellers",
       "settings": {
@@ -106,8 +52,6 @@
   },
   "order": [
     "hero",
-    "build_set",
-    "social_proof",
     "best_sellers",
     "craft",
     "marquee"
