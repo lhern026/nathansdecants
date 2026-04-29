@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,21 +15,6 @@
     },
     "story": {
       "type": "product-story",
-      "settings": {
-        "chapter_1_eyebrow": "The Narrative",
-        "chapter_1_headline": "Every scent tells a story. This is ours.",
-        "chapter_1_body": "We believe fragrance is the most intimate form of self-expression. Each decant is a chapter — poured by hand, sealed with intention, and delivered as an invitation to discover something extraordinary.",
-        "notes_eyebrow": "Olfactory Architecture",
-        "notes_title": "The Composition",
-        "pullquote": "Perfume is the art that makes memory speak.",
-        "pullquote_cite": "— Francis Kurkdjian",
-        "craft_eyebrow": "The Process",
-        "craft_headline": "Poured by Hand",
-        "craft_body": "Every decant is measured with precision, poured in small batches, and sealed in pharmaceutical-grade glass. We treat each vial like a handwritten letter — because it is one.",
-        "cta_eyebrow": "Begin Your Journey",
-        "cta_headline": "Find Your Signature",
-        "cta_button_text": "Explore the Collection"
-      },
       "blocks": {
         "note_1": {
           "type": "note",
@@ -75,7 +69,23 @@
         "detail_1",
         "detail_2",
         "detail_3"
-      ]
+      ],
+      "settings": {
+        "chapter_1_eyebrow": "The Narrative",
+        "chapter_1_headline": "Every scent tells a story. This is ours.",
+        "chapter_1_body": "We believe fragrance is the most intimate form of self-expression. Each decant is a chapter — poured by hand, sealed with intention, and delivered as an invitation to discover something extraordinary.",
+        "notes_eyebrow": "Olfactory Architecture",
+        "notes_title": "The Composition",
+        "pullquote": "Perfume is the art that makes memory speak.",
+        "pullquote_cite": "— Francis Kurkdjian",
+        "craft_eyebrow": "The Process",
+        "craft_headline": "Poured by Hand",
+        "craft_body": "Every decant is measured with precision, poured in small batches, and sealed in pharmaceutical-grade glass. We treat each vial like a handwritten letter — because it is one.",
+        "craft_image": "shopify://shop_images/dec10.png",
+        "cta_eyebrow": "Begin Your Journey",
+        "cta_headline": "Find Your Signature",
+        "cta_button_text": "Explore the Collection"
+      }
     }
   },
   "order": [
