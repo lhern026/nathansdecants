@@ -22,6 +22,23 @@
         "button_2_link": "/collections/all"
       }
     },
+    "build_set": {
+      "type": "build-your-set",
+      "settings": {
+        "eyebrow": "Your Rotation Starts Here",
+        "title": "Build your scent rotation.",
+        "subtitle": "Pick 3, 5, or 10 discovery-sized decants. No commitment, no full-bottle risk.",
+        "tier_1_label": "Starter",
+        "tier_1_count": "3",
+        "tier_1_price": "From $39",
+        "tier_2_label": "Collection",
+        "tier_2_count": "5",
+        "tier_2_price": "From $59",
+        "tier_3_label": "Connoisseur",
+        "tier_3_count": "10",
+        "tier_3_price": "From $99"
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -45,12 +62,13 @@
     "marquee": {
       "type": "marquee",
       "settings": {
-        "text": "PREMIUM DECANTS • WORLDWIDE SHIPPING • NATHAN'S SELECTS"
+        "text": "INITIO • YVES SAINT LAURENT • LE LABO • CREED • TOM FORD • MAISON FRANCIS KURKDJIAN"
       }
     }
   },
   "order": [
     "hero",
+    "build_set",
     "featured_collection",
     "craft",
     "marquee"

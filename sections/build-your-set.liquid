@@ -1,0 +1,234 @@
+<section class="section build-set">
+  <div class="container">
+
+    {%- comment -%} Editorial Header {%- endcomment -%}
+    <div class="build-set__header reveal">
+      <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="build-set__title">{{ section.settings.title }}</h2>
+      <p class="build-set__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {%- comment -%} The 3 Tier Cards {%- endcomment -%}
+    <div class="build-set__grid">
+
+      {%- comment -%} — Tier 1: Build 3 — {%- endcomment -%}
+      <div class="build-set__card reveal" style="transition-delay: 150ms">
+        <a href="{{ section.settings.tier_1_link | default: '/collections/all' }}" class="build-set__card-link">
+          <div class="build-set__card-shell">
+            <div class="build-set__card-inner">
+              
+              {%- comment -%} Visual: 3 Vials {%- endcomment -%}
+              <div class="build-set__vials build-set__vials--3">
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+              </div>
+
+              <div class="build-set__card-content">
+                <span class="build-set__tier-label">{{ section.settings.tier_1_label | default: 'Starter' }}</span>
+                <h3 class="build-set__tier-count">{{ section.settings.tier_1_count | default: '3' }}</h3>
+                <span class="build-set__tier-unit">decants</span>
+                {%- if section.settings.tier_1_price != blank -%}
+                  <span class="build-set__tier-price">{{ section.settings.tier_1_price }}</span>
+                {%- endif -%}
+              </div>
+
+              <div class="build-set__card-cta">
+                <span>Build {{ section.settings.tier_1_count | default: '3' }}</span>
+                <span class="build-set__arrow">→</span>
+              </div>
+
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {%- comment -%} — Tier 2: Build 5 (Featured) — {%- endcomment -%}
+      <div class="build-set__card build-set__card--featured reveal" style="transition-delay: 300ms">
+        <a href="{{ section.settings.tier_2_link | default: '/collections/all' }}" class="build-set__card-link">
+          <div class="build-set__card-shell">
+            <div class="build-set__badge">MOST POPULAR</div>
+            <div class="build-set__card-inner">
+              
+              {%- comment -%} Visual: 5 Vials {%- endcomment -%}
+              <div class="build-set__vials build-set__vials--5">
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+              </div>
+
+              <div class="build-set__card-content">
+                <span class="build-set__tier-label">{{ section.settings.tier_2_label | default: 'Collection' }}</span>
+                <h3 class="build-set__tier-count">{{ section.settings.tier_2_count | default: '5' }}</h3>
+                <span class="build-set__tier-unit">decants</span>
+                {%- if section.settings.tier_2_price != blank -%}
+                  <span class="build-set__tier-price">{{ section.settings.tier_2_price }}</span>
+                {%- endif -%}
+              </div>
+
+              <div class="build-set__card-cta">
+                <span>Build {{ section.settings.tier_2_count | default: '5' }}</span>
+                <span class="build-set__arrow">→</span>
+              </div>
+
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {%- comment -%} — Tier 3: Build 10 — {%- endcomment -%}
+      <div class="build-set__card reveal" style="transition-delay: 450ms">
+        <a href="{{ section.settings.tier_3_link | default: '/collections/all' }}" class="build-set__card-link">
+          <div class="build-set__card-shell">
+            <div class="build-set__card-inner">
+
+              {%- comment -%} Visual: 10 Vials {%- endcomment -%}
+              <div class="build-set__vials build-set__vials--10">
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+                <div class="build-set__vial build-set__vial--filled"></div>
+              </div>
+
+              <div class="build-set__card-content">
+                <span class="build-set__tier-label">{{ section.settings.tier_3_label | default: 'Connoisseur' }}</span>
+                <h3 class="build-set__tier-count">{{ section.settings.tier_3_count | default: '10' }}</h3>
+                <span class="build-set__tier-unit">decants</span>
+                {%- if section.settings.tier_3_price != blank -%}
+                  <span class="build-set__tier-price">{{ section.settings.tier_3_price }}</span>
+                {%- endif -%}
+              </div>
+
+              <div class="build-set__card-cta">
+                <span>Build {{ section.settings.tier_3_count | default: '10' }}</span>
+                <span class="build-set__arrow">→</span>
+              </div>
+
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Build Your Set",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Your Rotation Starts Here"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Build your scent rotation."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Pick 3, 5, or 10 discovery-sized decants. No commitment, no full-bottle risk."
+    },
+    {
+      "type": "header",
+      "content": "Tier 1"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_label",
+      "label": "Label",
+      "default": "Starter"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_count",
+      "label": "Count",
+      "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "tier_1_price",
+      "label": "Price Text (optional)",
+      "default": "From $39"
+    },
+    {
+      "type": "url",
+      "id": "tier_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Tier 2 (Featured)"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_label",
+      "label": "Label",
+      "default": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_count",
+      "label": "Count",
+      "default": "5"
+    },
+    {
+      "type": "text",
+      "id": "tier_2_price",
+      "label": "Price Text (optional)",
+      "default": "From $59"
+    },
+    {
+      "type": "url",
+      "id": "tier_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Tier 3"
+    },
+    {
+      "type": "text",
+      "id": "tier_3_label",
+      "label": "Label",
+      "default": "Connoisseur"
+    },
+    {
+      "type": "text",
+      "id": "tier_3_count",
+      "label": "Count",
+      "default": "10"
+    },
+    {
+      "type": "text",
+      "id": "tier_3_price",
+      "label": "Price Text (optional)",
+      "default": "From $99"
+    },
+    {
+      "type": "url",
+      "id": "tier_3_link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Build Your Set"
+    }
+  ]
+}
+{% endschema %}
