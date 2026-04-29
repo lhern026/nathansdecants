@@ -76,14 +76,15 @@
       },
       "block_order": ["order_1", "order_2", "order_3", "order_4"]
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "best_sellers": {
+      "type": "best-sellers",
       "settings": {
-        "eyebrow": "Curated Selection",
-        "title": "The Collection",
-        "philosophy_text": "Experience the world's most exclusive houses, without the commitment. Every decant is an invitation to discover your next signature scent.",
+        "eyebrow": "Most Requested",
+        "title": "The Best Sellers.",
+        "text": "The fragrances currently dominating TikTok. Proven compliment getters, available in discovery-sized decants.",
+        "button_text": "View All Best Sellers",
         "collection": "bestsellers",
-        "products_to_show": 5
+        "products_to_show": 8
       }
     },
     "craft": {
@@ -107,7 +108,7 @@
     "hero",
     "build_set",
     "social_proof",
-    "featured_collection",
+    "best_sellers",
     "craft",
     "marquee"
   ]
