@@ -1,0 +1,102 @@
+<section class="section social-proof">
+  <div class="social-proof__header">
+    <span class="social-proof__dot"></span>
+    <h2 class="social-proof__title">{{ section.settings.title }}</h2>
+  </div>
+
+  <div class="social-proof__track-wrap">
+    <div class="social-proof__track">
+      {%- for block in section.blocks -%}
+        <div class="social-proof__card">
+          <div class="social-proof__card-shell">
+            <div class="social-proof__card-inner">
+              <div class="social-proof__card-image">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.text }}" loading="lazy">
+                {%- else -%}
+                  <div class="social-proof__image-placeholder"></div>
+                {%- endif -%}
+                <div class="social-proof__card-overlay"></div>
+              </div>
+              <div class="social-proof__card-content">
+                <span class="social-proof__card-text">{{ block.settings.text }}</span>
+                <span class="social-proof__card-time">{{ block.settings.time }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+      {%- comment -%} Duplicate for infinite scroll {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <div class="social-proof__card">
+          <div class="social-proof__card-shell">
+            <div class="social-proof__card-inner">
+              <div class="social-proof__card-image">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.text }}" loading="lazy">
+                {%- else -%}
+                  <div class="social-proof__image-placeholder"></div>
+                {%- endif -%}
+                <div class="social-proof__card-overlay"></div>
+              </div>
+              <div class="social-proof__card-content">
+                <span class="social-proof__card-text">{{ block.settings.text }}</span>
+                <span class="social-proof__card-time">{{ block.settings.time }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social Proof Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "PACKING ORDERS TODAY"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "order",
+      "name": "Order Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Order Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Let's pack an order for Jordan!"
+        },
+        {
+          "type": "text",
+          "id": "time",
+          "label": "Time",
+          "default": "2 min ago"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof Carousel",
+      "blocks": [
+        { "type": "order" },
+        { "type": "order" },
+        { "type": "order" },
+        { "type": "order" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -39,6 +39,43 @@
         "tier_3_price": "From $99"
       }
     },
+    "social_proof": {
+      "type": "social-proof",
+      "settings": {
+        "title": "PACKING ORDERS TODAY"
+      },
+      "blocks": {
+        "order_1": {
+          "type": "order",
+          "settings": {
+            "text": "Let's pack an order for Jordan!",
+            "time": "2 min ago"
+          }
+        },
+        "order_2": {
+          "type": "order",
+          "settings": {
+            "text": "Packing Creed Aventus for Ethan",
+            "time": "15 min ago"
+          }
+        },
+        "order_3": {
+          "type": "order",
+          "settings": {
+            "text": "Let's pack an order for Sloan!",
+            "time": "1 hr ago"
+          }
+        },
+        "order_4": {
+          "type": "order",
+          "settings": {
+            "text": "Packing Ex Nihilo for Alex",
+            "time": "2 hrs ago"
+          }
+        }
+      },
+      "block_order": ["order_1", "order_2", "order_3", "order_4"]
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -69,6 +106,7 @@
   "order": [
     "hero",
     "build_set",
+    "social_proof",
     "featured_collection",
     "craft",
     "marquee"
